@@ -79,3 +79,37 @@ Symmetric keys can be generated using OpenSSL’s rand command, which produces c
    openssl enc \-aes-256-cbc \-d \-in encryptfile11.enc \-out decryptfile11.txt \-pass file:key11.txt  
 4. cat decryptfile11.txt  
 5. Now you will see the decrypted message.
+
+
+**STEPS**
+
+ayush@Ayush:\~$ openssl rand \-base64 256 \>key11.txt  
+ayush@Ayush:\~$ cat key11.txt  
+Q4uuJf6F9Xhp8CLxz1b5fykd39181yiNeA5jD6Wl/E9RwL1fK3pJ55DMHC9912m+  
+9+Ia+yQMQ5pivfPd7cWXB4JOfj0IOM210qI4y9a0uBlvF/NyCPGR/fNO3DlDbMl9  
+F0UeZRbERAR28ZU1vJqTWt1rmwzgNKwPxKFiES0aKarQ0galGkZxXIUgtukAVF+Y  
+vcMpVPQPcrS7EG5xFp+fce1bDyrNxRGOSp8R+BnkMjpKRPK0Ko1wV279YVHvThDU  
+hgxmoRzht2IvA0Rdp77sGkm710I8N6153RwhhI5rATX9gxAlBmrJyuXiddCW4pd5  
+xTs91ymHMtP3nqzh7uWAxg==  
+ayush@Ayush:\~$ echo "hey, my name is ayush and it's my encrypted file or i can call it my secret message and i will be very disappointed in me if you read it without using the key, chill i am just kidding" \>message11.txt  
+ayush@Ayush:\~$ cat message11.txt  
+hey, my name is ayush and it's my encrypted file or i can call it my secret message and i will be very disappointed in me if you read it without using the key, chill i am just kidding  
+ayush@Ayush:\~$ sudo openssl enc \-aes-256-cbc \-in message11.txt \-out encryptfile11.enc \-pass file:key11.txt  
+\[sudo\] password for ayush:   
+\*\*\* WARNING : deprecated key derivation used.  
+Using \-iter or \-pbkdf2 would be better.  
+ayush@Ayush:\~$ cat encryptfile11.enc  
+Salted\_\_dQ���x����C��}�P�  
+6�3nP�פ���Q�\[e��U܅ƥ�${�����E�I\[��\~��▒��A��-��a�j  
+                                                J�����C��Ƹu^x�.A��2sue)\[����}�\[����r�5n���0\[�z}�d(�� 02�����V�OI��O�J�t�3VD�yD�z�����@\!�:m(�����r���̷���r\\ɿ�ayush@Ayush:\~$   
+ayush@Ayush:\~$ openssl enc \-aes-256-cbc \-d \-in encryptfile11.enc \-out decryptfile11.txt \-pass file:key11.txt  
+\*\*\* WARNING : deprecated key derivation used.  
+Using \-iter or \-pbkdf2 would be better.  
+ayush@Ayush:\~$ cat decryptfile11.txt  
+hey, my name is ayush and it's my encrypted file or i can call it my secret message and i will be very disappointed in me if you read it without using the key, chill i am just kidding  
+ayush@Ayush:\~$ rm decryptfile11.txt  
+ayush@Ayush:\~$ openssl enc \\-aes-256-cbc \\-d \\-in encryptfile11.enc \\-out decryptfile11.txt \\-pass file:key11.txt   
+\*\*\* WARNING : deprecated key derivation used.  
+Using \-iter or \-pbkdf2 would be better.  
+ayush@Ayush:\~$ cat decryptfile11.txt  
+hey, my name is ayush and it's my encrypted file or i can call it my secret message and i will be very disappointed in me if you read it without using the key, chill i am just kidding
